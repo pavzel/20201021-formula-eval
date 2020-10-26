@@ -31,20 +31,23 @@ function initializeGame() {
 
 /* The main part of script. */
 $(document).ready(function () {
-    const maxNumber = 100;
+    const maxNumber = 20;
+    let solution = 0;
 
     initializeGame();
 
     $("#btn-answer").click(function() {
-        $("#message").text("You answered! " + $("#answer").val());
+        $("#message").text(`You answered: ${$("#answer").val()}. Correct answer: ${solution}.`);
+        $("#answer").prop("disabled", true);
     });
 
     $("#new").click(function() {
         let operation = chooseOperation();
-        problem = generateProblemOneOperation(maxNumber, maxNumber, operation);
+        let problem = generateProblemOneOperation(maxNumber, maxNumber, operation);
         solution = eval(problem);
         $("#problem").html(problem + " = ");
-        $("#answer").val("");
+        $("#answer").val("").prop("disabled", false);
+        // $("#answer").prop("disabled", false);
         $("#message").text("Solve a problem:");
         $("#content").show();
     });
