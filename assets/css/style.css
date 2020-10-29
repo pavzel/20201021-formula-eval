@@ -1,3 +1,8 @@
 #answer {
     width: 2.5rem;
 }
+
+button {
+    padding: 5px;
+    margin: 5px;
+}

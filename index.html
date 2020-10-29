@@ -9,20 +9,19 @@
 <body>
     <main>
         <div>
-            <h1 id="message">Solve a problem:</h1>
-            <p id="content">
+            <h1 id="message">Let's play!</h1>
+        </div>
+        <div id="content" style="display: none">
+            <form id="problem-form">
                 <span id="problem"></span>
-                <input id="answer" type="text" maxlength="5" value="" disabled>
-                <button id="btn-answer">Answer</button>
-            </p>
+                <input id="answer" type="text" maxlength="5">
+                <input type="submit" value="Answer">
+            </form>
         </div>
         <br>
-        <div id="new">
-            <button>New Problem</button>
-        </div>
-        <br>
-        <div id="stop">
-            <button>Stop Game!</button>
+        <div class="control-buttons">
+            <button id="new">New Problem</button>
+            <button id="stop">Stop Game!</button>
         </div>
     </main>
 

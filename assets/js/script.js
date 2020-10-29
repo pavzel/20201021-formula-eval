@@ -23,22 +23,20 @@ function generateProblemOneOperation(maxValue1, maxValue2, operation) {
     return output;
 }
 
-/* Initialise the game. */
-function initializeGame() {
-    $("#content").hide();
-
-}
 
 /* The main part of script. */
 $(document).ready(function () {
     const maxNumber = 20;
     let solution = 0;
 
-    initializeGame();
-
-    $("#btn-answer").click(function() {
-        $("#message").text(`You answered: ${$("#answer").val()}. Correct answer: ${solution}.`);
-        $("#answer").prop("disabled", true);
+    $("#problem-form").submit(function(e) {
+        e.preventDefault();
+        $(this).children("input").prop("disabled", true);
+        let message = "You are right!";
+        if ($("#answer").val() != solution) {
+            message = `You are wrong. Correct answer is ${solution}.`;
+        }
+        $("#message").text(message);
     });
 
     $("#new").click(function() {
@@ -46,16 +44,16 @@ $(document).ready(function () {
         let problem = generateProblemOneOperation(maxNumber, maxNumber, operation);
         solution = eval(problem);
         $("#problem").html(problem + " = ");
-        $("#answer").val("").prop("disabled", false);
-        // $("#answer").prop("disabled", false);
+        $("#answer").val("");
+        $("#problem-form").children("input").prop("disabled", false);
         $("#message").text("Solve a problem:");
         $("#content").show();
     });
 
     $("#stop").click(function() {
+        alert("Stop was pressed");
         $("#content").hide();
-        $("#new").hide();
-        $("#stop").hide();
+        $(".control-buttons").hide();
         $("#message").text("Game is OVER!");
         console.log("FINISH!");
     });
