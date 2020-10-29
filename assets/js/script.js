@@ -1,9 +1,3 @@
-
-
-function increaseFunc(a, b) {
-    return [a + 1, b + 1];
-}
-
 function generateRandomZ(minN, maxN) {
     return minN + Math.floor(Math.random() * (maxN - minN + 1));
 }
@@ -32,11 +26,11 @@ $(document).ready(function () {
     $("#problem-form").submit(function(e) {
         e.preventDefault();
         $(this).children("input").prop("disabled", true);
-        let message = "You are right!";
+        let message = "<br>You are right!";
         if ($("#answer").val() != solution) {
             message = `You are wrong. Correct answer is ${solution}.`;
         }
-        $("#message").text(message);
+        $("#message").html(message);
     });
 
     $("#new").click(function() {
@@ -51,10 +45,8 @@ $(document).ready(function () {
     });
 
     $("#stop").click(function() {
-        alert("Stop was pressed");
         $("#content").hide();
         $(".control-buttons").hide();
-        $("#message").text("Game is OVER!");
-        console.log("FINISH!");
+        $("#message").text("Game is OVER!").addClass("py-5 my-5 font-weight-bold text-danger");
     });
 });

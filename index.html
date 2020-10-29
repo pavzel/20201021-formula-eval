@@ -3,27 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eval()</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="assets/css/style.css" rel="stylesheet">
+
+    <title>Arithmetic</title>
 </head>
 <body>
     <main>
-        <div>
-            <h1 id="message">Let's play!</h1>
-        </div>
-        <div id="content" style="display: none">
-            <form id="problem-form">
-                <span id="problem"></span>
-                <input id="answer" type="text" maxlength="5">
-                <input type="submit" value="Answer">
-            </form>
-        </div>
-        <br>
-        <div class="control-buttons">
-            <button id="new">New Problem</button>
-            <button id="stop">Stop Game!</button>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4">
+                    <div class="row my-3">
+                        <div class="col">
+                            <h1 id="message" class="text-center">
+                                <br>
+                                Let's play
+                                <br>
+                                <p class="text-primary font-weight-bold pt-2">Easy Math</p>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row" id="content" style="display: none">
+                        <form id="problem-form" class="col text-center p-1">
+                            <span id="problem"></span>
+                            <input id="answer" type="text" maxlength="5">
+                            <input type="submit" value="Answer" class="my-3">
+                        </form>
+                    </div>
+                    <br>
+                    <div class="row control-buttons">
+                        <div class="col text-center">
+                            <button id="new" class="p-2 m-1 btn-success">New Problem</button>
+                            <button id="stop" class="p-2 m-1 btn-danger">Stop Game!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
+
+    <footer class="py-1 bg-primary">
+        <div class="container">
+            <p class="m-0 text-center text-white">
+                <em>Pavel Zelenin, 2020; e-mail: pavel.v.zelenin@gmail.com</em>
+            </p>
+        </div>
+    </footer>
 
     <!-- Scripts located at the bottom of the body to insure page is fully loaded before execution -->
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>

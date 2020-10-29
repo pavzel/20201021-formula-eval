@@ -1,8 +1,23 @@
+#message {
+    font-size: 3rem;
+    height: 170px;
+    text-align: center;
+}
+
+#content {
+    font-size: 2.5rem;
+}
+
 #answer {
-    width: 2.5rem;
+    width: 7.5rem;
 }
 
 button {
-    padding: 5px;
-    margin: 5px;
+    font-size: 2rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
