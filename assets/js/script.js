@@ -11,6 +11,9 @@ function generateProblemOneOperation(maxValue1, maxValue2, operation) {
     let a = generateRandomZ(0, maxValue1);
     let b = generateRandomZ(0, maxValue2);
     if (operation == '/') {
+        if (b == 0) {
+            b = 1;
+        }
         a = a * b;
     }
     output = `${a} ${operation} ${b}`;
