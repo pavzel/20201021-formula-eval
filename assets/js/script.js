@@ -24,6 +24,7 @@ function generateProblemOneOperation(maxValue1, maxValue2, operation) {
 /* The main part of script. */
 $(document).ready(function () {
     const maxNumber = 20;
+    const timeoutT = 30;
     let solution = 0;
 
     $("#problem-form").submit(function(e) {
@@ -43,7 +44,10 @@ $(document).ready(function () {
         $("#problem").html(problem + " = ");
         $("#answer").val("");
         $("#problem-form").children("input").prop("disabled", false);
-        $("#message").text("Solve a problem:");
+        let message = `Solve a problem<br>
+            <em><small><span id="time-left">${timeoutT}</span> sec left</small></em>`;
+        $("#message").html(message);
+        // $("#message").html("Solve a problem");
         $("#content").show();
     });
 
