@@ -26,9 +26,11 @@ $(document).ready(function () {
     const maxNumber = 20;
     const timeoutT = 30;
     let solution = 0;
+    let countdownTimer;
 
     $("#problem-form").submit(function(e) {
         e.preventDefault();
+        clearInterval(countdownTimer);
         $(this).children("input").prop("disabled", true);
         let message = "<br>You are right!";
         if ($("#answer").val() != solution) {
@@ -44,11 +46,22 @@ $(document).ready(function () {
         $("#problem").html(problem + " = ");
         $("#answer").val("");
         $("#problem-form").children("input").prop("disabled", false);
-        let message = `Solve a problem<br>
-            <em><small><span id="time-left">${timeoutT}</span> sec left</small></em>`;
-        $("#message").html(message);
-        // $("#message").html("Solve a problem");
         $("#content").show();
+        let timeLeft = timeoutT;
+        let message = `Solve a problem<br>
+            <em><small><span id="time-left">${timeLeft}</span> sec left</small></em>`;
+        $("#message").html(message);
+        countdownTimer = setInterval(function() {
+            if (timeLeft == 0) {
+                clearInterval(countdownTimer);
+                $("#problem-form").children("input").prop("disabled", true);
+                let message = `Time is out. Correct answer was ${solution}.`;
+                $("#message").html(message);
+            } else {
+                timeLeft -= 1;
+                $("#time-left").html(timeLeft);
+            }
+        }, 1000);
     });
 
     $("#stop").click(function() {
