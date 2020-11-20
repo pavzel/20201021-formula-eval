@@ -23,8 +23,12 @@ function generateProblemOneOperation(maxValue1, maxValue2, operation) {
 
 /* The main part of script. */
 $(document).ready(function () {
-    const maxNumber = 20;
-    const timeoutT = 30;
+    const minMaxNumber = 2;
+    const maxMaxNumber = 100;
+    let maxNumber = 10;
+    const minTimeoutT = 10;
+    const maxTimeoutT = 60;
+    let timeoutT = 10;
     let solution = 0;
     let countdownTimer;
 
@@ -35,7 +39,13 @@ $(document).ready(function () {
         let message = "<br>You are right!";
         if ($("#answer").val() != solution) {
             message = `You are wrong. Correct answer is ${solution}.`;
+            if (timeoutT < maxTimeoutT) { timeoutT += 1; }
+            if (maxNumber > minMaxNumber) { maxNumber -= 1; }
+        } else {
+            if (timeoutT > minTimeoutT) { timeoutT -= 1; }
+            if (maxNumber < maxMaxNumber) { maxNumber += 1; }
         }
+        $("#new").text(`New problem\ntime=${timeoutT}s, max=${maxNumber}`);
         $("#message").html(message);
     });
 
@@ -56,6 +66,9 @@ $(document).ready(function () {
                 clearInterval(countdownTimer);
                 $("#problem-form").children("input").prop("disabled", true);
                 let message = `Time is out. Correct answer was ${solution}.`;
+                if (timeoutT < maxTimeoutT) { timeoutT += 1; }
+                if (maxNumber > minMaxNumber) { maxNumber -= 1; }
+                $("#new").text(`New problem\ntime=${timeoutT}s, max=${maxNumber}`);
                 $("#message").html(message);
             } else {
                 timeLeft -= 1;
