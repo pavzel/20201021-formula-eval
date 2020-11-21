@@ -26,7 +26,7 @@ $(document).ready(function () {
     const minMaxNumber = 2;
     const maxMaxNumber = 100;
     let maxNumber = 10;
-    const minTimeoutT = 10;
+    const minTimeoutT = 5;
     const maxTimeoutT = 60;
     let timeoutT = 10;
     let solution = 0;
@@ -36,6 +36,7 @@ $(document).ready(function () {
         e.preventDefault();
         clearInterval(countdownTimer);
         $(this).children("input").prop("disabled", true);
+        $("#new").prop("disabled", false);
         let message = "<br>You are right!";
         if ($("#answer").val() != solution) {
             message = `You are wrong. Correct answer is ${solution}.`;
@@ -56,6 +57,7 @@ $(document).ready(function () {
         $("#problem").html(problem + " = ");
         $("#answer").val("");
         $("#problem-form").children("input").prop("disabled", false);
+        $("#new").prop("disabled", true);
         $("#content").show();
         let timeLeft = timeoutT;
         let message = `Solve a problem<br>
@@ -69,6 +71,7 @@ $(document).ready(function () {
                 if (timeoutT < maxTimeoutT) { timeoutT += 1; }
                 if (maxNumber > minMaxNumber) { maxNumber -= 1; }
                 $("#new").text(`New problem\ntime=${timeoutT}s, max=${maxNumber}`);
+                $("#new").prop("disabled", false);
                 $("#message").html(message);
             } else {
                 timeLeft -= 1;
