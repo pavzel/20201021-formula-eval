@@ -8,8 +8,8 @@ function chooseOperation() {
 }
 
 function generateProblemOneOperation(maxValue1, maxValue2, operation) {
-    let a = generateRandomZ(0, maxValue1);
-    let b = generateRandomZ(0, maxValue2);
+    let a = generateRandomZ(Math.floor(maxValue1 / 2), maxValue1);
+    let b = generateRandomZ(Math.floor(maxValue2 / 2), maxValue2);
     if (operation == '/') {
         if (b == 0) {
             b = 1;
@@ -26,9 +26,9 @@ $(document).ready(function () {
     const minMaxNumber = 2;
     const maxMaxNumber = 100;
     let maxNumber = 10;
-    const minTimeoutT = 5;
+    const minTimeoutT = 10;
     const maxTimeoutT = 60;
-    let timeoutT = 10;
+    let timeoutT = 20;
     let solution = 0;
     let countdownTimer;
 
